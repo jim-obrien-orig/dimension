@@ -9,9 +9,14 @@
 			<div id="bg"></div>
 
 		<!-- Scripts -->
-			<script src="js/skel.min.js"></script>
-			<script src="js/util.js"></script>
-			<script src="js/main.js"></script>
+			{{ $js := .Site.Data.libs.js }}
+			{{ $util := resources.Get "js/util.js" | minify | fingerprint }}
+			{{ $main := resources.Get "js/main.js" | minify | fingerprint }}
+
+			{{ printf "<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/%s/jquery.min.js\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" $js.jQuery.version $js.jQuery.integrity | safeHTML }}
+			{{ printf "<script src=\"//cdnjs.cloudflare.com/ajax/libs/skel/%s/skel.min.js\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" $js.skel.version $js.skel.integrity | safeHTML }}
+			<script src="{{ $util.RelPermalink }}" integrity="{{ $util.Data.Integrity }}" crossorigin="anonymous"></script>
+			<script src="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}" crossorigin="anonymous"></script>
 			{{ template "_internal/google_analytics_async.html" . }}
 
 	</body>
