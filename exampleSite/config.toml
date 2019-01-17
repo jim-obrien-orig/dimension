@@ -9,27 +9,27 @@ disableKinds=["RSS"]
 [params]
   description = '<!--[-->A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<!--]--><br />
                 <!--[-->for free under the <a href="https://html5up.net/license">Creative Commons</a> license.<!--]-->'
-  logo = "fa-diamond"
+  logo = "far fa-gem"
   copyright = "Untitled"
 
 [[params.social]]
-  medium = "twitter"
+  medium = "fab fa-twitter"
   icon = "twitter"
   link = "#"
 
 [[params.social]]
   medium = "facebook"
-  icon = "facebook"
+  icon = "fab fa-facebook"
   link = "#"
 
 [[params.social]]
   medium = "instagram"
-  icon = "instagram"
+  icon = "fab fa-instagram"
   link = "#"
 
 [[params.social]]
   medium = "github"
-  icon = "github"
+  icon = "fab fa-github"
   link = "#"
 
 [languages]
