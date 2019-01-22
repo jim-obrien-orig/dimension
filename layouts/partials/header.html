@@ -22,8 +22,6 @@
 		{{- $noScriptStyle := resources.Get "sass/main.scss" | toCSS | minify | fingerprint -}}
 		<noscript><link rel="stylesheet" href="{{ $noScriptStyle.RelPermalink }}" integrity="{{ $noScriptStyle.Data.Integrity }}" media="screen" crossorigin="anonymous" /></noscript>
 
-		<link rel="stylesheet" href="{{ $.Site.BaseURL }}/css/pure-release-1.0.0/pure-min.css">
-		<link rel="stylesheet" href="{{ $.Site.BaseURL }}/css/pure-release-1.0.0/grids-responsive-min.css">
 		{{- range .Site.Params.customCSS -}}
 		<link rel="stylesheet" href="{{ . | absURL }}">
 		{{- end -}}

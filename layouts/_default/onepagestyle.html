@@ -1,5 +1,5 @@
 <article id="{{ .File.TranslationBaseName }}">
-    {{ with .Params.displayTitle }}
+    {{ if .Param "displayTitle" }}
       <h1>{{ .Title }}</h1>
     {{ end }}
     {{ .Content }}
