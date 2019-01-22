@@ -1,4 +1,6 @@
 <article id="{{ .File.TranslationBaseName }}">
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+    {{ with .Params.displayTitle }}
+      <h1>{{ .Title }}</h1>
+    {{ end }}
+    {{ .Content }}
 </article>

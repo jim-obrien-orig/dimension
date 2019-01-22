@@ -11,16 +11,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		{{- $css := .Site.Data.libs.css -}}
 
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:300,400|Roboto+Condensed:400,600" rel="stylesheet">
 
-		{{ printf "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/all.css\" integrity=\"%s\" crossorigin=\"anonymous\">" $css.fontawesome.version $css.fontawesome.integrity | safeHTML }}
+		{{ printf "<link rel=\"stylesheet\" href=\"//use.fontawesome.com/releases/v%s/css/all.css\" integrity=\"%s\" crossorigin=\"anonymous\">" $css.fontawesome.version $css.fontawesome.integrity | safeHTML }}
 		{{- $ie9Styles := resources.Get "sass/ie9.scss" | toCSS | minify -}}
 		<!--[if lte IE 9]><link rel="stylesheet" href="{{ $ie9Styles.RelPermalink }}" /><![endif]-->
 		{{- $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint -}}
+		{{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\">" $css.purecss.url $css.purecss.integrity | safeHTML }}
 		<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" media="screen" crossorigin="anonymous" />
 		{{- $noScriptStyle := resources.Get "sass/main.scss" | toCSS | minify | fingerprint -}}
-		<noscript><link rel="stylesheet" href="{{ $noScriptStyle.RelPermalink }}" integrity="{{ $noScriptStyle.Data.Integrity }}" media="screen" crossorigin="anonymous" /></noscript>				
+		<noscript><link rel="stylesheet" href="{{ $noScriptStyle.RelPermalink }}" integrity="{{ $noScriptStyle.Data.Integrity }}" media="screen" crossorigin="anonymous" /></noscript>
+
+		<link rel="stylesheet" href="{{ $.Site.BaseURL }}/css/pure-release-1.0.0/pure-min.css">
+		<link rel="stylesheet" href="{{ $.Site.BaseURL }}/css/pure-release-1.0.0/grids-responsive-min.css">
 		{{- range .Site.Params.customCSS -}}
 		<link rel="stylesheet" href="{{ . | absURL }}">
 		{{- end -}}
+
 	</head>
 	<body>
